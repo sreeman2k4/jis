@@ -1,0 +1,34 @@
+<%layout("./layouts/boilerplate")%>
+<link rel="stylesheet" href="/stylesheets/form.css">
+
+
+
+<a href="/cases/<%=incident._id%>/sessionslot">bookslot</a>
+
+    <div class="wrapper">
+        <div class="flex-container">
+            <div class="container">
+                <form action="/cases/<%=incident._id%>" method="POST">
+                    <div>
+                        <label for="attendingJudge" class="form-label">attendingJudge</label>
+                        <input type="text" class="form-control" name="attendingJudge" placeholder="attendingJudge" id="attendingJudge">
+                    </div>
+                   <div>
+                    <label for="summary" class="form-label">summary:</label>
+                    <textarea name="summary" class="form-control" rows="5" cols="60" id="summary"></textarea>
+                   </div>
+                    <div>
+                        <label for="nextHearingDate" class="form-label">nextHearingDate</label>
+                        <input type="date" class="form-control" name="nextHearingDate" placeholder="nextHearingDate" id="nextHearingDate" value="<%=query.date%>">
+                    </div>
+                    <div>
+                        <label for="dateOfCreation" class="form-label">date of creation:</label>
+                        <input type="text" class="form-control" name="dateOfCreation" placeholder="creation date" id="dateOfCreation" value="<%=formattedDate%>">
+                     </div>
+                    <button>submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

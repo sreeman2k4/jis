@@ -1,0 +1,83 @@
+
+/* General styling */
+
+.flex-container {
+    width: 70%; /* Adjusted to 70% of the page width */
+    margin: 20px auto; /* Center the container horizontally */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Add background color with transparency */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('https://img.freepik.com/premium-photo/low-key-filter-wooden-judge-s-gavel-law-book-golden-scale-wood-background_34259-440.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+.flex-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the right */
+    align-items: flex-end; /* Aligns items to the bottom */
+    position: fixed; /* Fixes the container position */
+    /* bottom: 30px; Aligns the container slightly above the bottom */
+    right: 0; /* Aligns the container to the right */
+}
+
+
+
+
+
+/* Form elements styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+.btn {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Dropdown styling */
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif; /* Font for dropdown */
+}
+
+select option {
+    font-family: Arial, Helvetica, sans-serif; /* Font for dropdown options */
+}
+
+select option:checked {
+    background-color: #10ad42; /* Background color of selected option */
+    color: white; /* Text color of selected option */
+}

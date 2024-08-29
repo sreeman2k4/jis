@@ -1,0 +1,215 @@
+<link rel="stylesheet" href="/stylesheets/info.css">
+<%layout("./layouts/boilerplate")%>
+
+<link rel="stylesheet" href="/stylesheets/home.css">
+<!-- <link rel="stylesheet" href="/stylesheets/search.css"> -->
+<link rel="stylesheet" href="/stylesheets/search.css">
+<link rel="stylesheet" href="/stylesheets/navbar.css">
+<!-- <link rel="stylesheet" href="/stylesheets/check.css"> -->
+<link rel="stylesheet" href="/stylesheets/options.css">
+<link rel="stylesheet" href="/stylesheets/mainbar.css">
+
+<!-- ..................................................................................................................................... -->
+<nav id="navbar" style="left:0;">
+  <ul class="navbar-items flexbox-col">
+    <li class="navbar-logo flexbox-left">
+      <a class="navbar-item-inner flexbox">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1438.88 1819.54">
+          <polygon points="925.79 318.48 830.56 0 183.51 1384.12 510.41 1178.46 925.79 318.48"/>
+          <polygon points="1438.88 1663.28 1126.35 948.08 111.98 1586.26 0 1819.54 1020.91 1250.57 1123.78 1471.02 783.64 1663.28 1438.88 1663.28"/>
+        </svg>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/profile" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="settings-outline"></ion-icon>
+        </div>
+        <span class="link-text">profile</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/find" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="search-outline"></ion-icon>
+        </div>
+        <span class="link-text">Search</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left" href="/cases" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="home-outline"></ion-icon>
+        </div>
+        <span class="link-text">home</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/addcase" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="folder-open-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%> <span class="link-text">addcase</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/signup" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="pie-chart-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%>  <span class="link-text">add new judge/lawyer</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/users" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="people-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%>  <span class="link-text">Users</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/status" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="chatbubbles-outline"></ion-icon>
+        </div>
+        <span class="link-text">upcoming cases</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/logout" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="settings-outline"></ion-icon>
+        </div>
+        <span class="link-text">logout</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- .................................................................................................................................. -->
+
+
+<%layout("./layouts/boilerplate")%>
+<div class="container1" style="height:100px;border: 1px solid #000;">
+    <div class="row" >
+        <div class="col" >
+            <div class="navbar">
+                <details>
+                    <summary></summary>
+                    <nav class="menu">
+                      <a href="/cases">Home</a>
+                      <%if(user.isRegistrar=="true"){%><a href="/cases/add">add case</a>
+                      <%}%>
+                      <a href="/cases/pending">pending cases</a>
+                      <a href="/signup">register</a>
+                      <a href="/logout">logout</a>
+                    </nav>
+                  </details>
+            </div>
+        </div>
+        <div class="col">
+            <h1 style="color: aliceblue;text-align: center;">JUDICIARY INFORMATION</h1>
+        </div>
+        <div class="col">
+            <div class="container">
+                <div class="box">
+                  <form class="search" action="/cases/search" method="GET">
+                    <input class="input" type="search" name="dsearch" placeholder="Search" aria-label="Search">
+                    <button class="searchButton" type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+<!-- ........................................................................................................................... -->
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="wrap animate pop">
+                <div class="overlay">
+                  <div class="overlay-content animate slide-left delay-2">
+                    <h1 class="animate slide-left pop delay-4"><h1><%=incident.CIN%></h1></h1>
+                    <p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;"><%=incident.crimeType%>:<%=incident.caseTitle%> <em></em></p>
+                  </div>
+                  <div class="image-content animate slide delay-5"></div>
+                  <div class="dots animate">
+                    <div class="dot animate slide-up delay-6"></div>
+                    <div class="dot animate slide-up delay-7"></div>
+                    <div class="dot animate slide-up delay-8"></div>
+                  </div>
+                </div>
+                <div class="text">
+                  <p><img class="inset" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQBDgMBIgACEQEDEQH/xAAcAAAABwEBAAAAAAAAAAAAAAAAAQIDBAUGBwj/xABFEAACAQMCAwQIAwUECAcAAAABAgMABBEFEgYhMRNBUWEHFCIyQnGBkRWhsSMzUmJygpLB0RYkNENTc6LxJURUY5PC4f/EABgBAAMBAQAAAAAAAAAAAAAAAAABAgME/8QAIREAAgMAAwEBAQADAAAAAAAAAAECERIDITFBE1EEFDL/2gAMAwEAAhEDEQA/AOOUKIGjoAUKAohShQAKUKSKOgBQ60sUgUod1ACqOk0ARy5jnQAujoulCmAoUTNtI86ApEvw/Ok/ArslQwtL0IFIfclwYmOcCpmnbcklc5HKot0R+JPgYGKy0zbKJUVmrxlt+PKo23LFV54NXFocW/NV+1VtmvaXrDHLcaFL+ilH+DTxugBZcA9KUIpNu7aceNTdUXYUXHQ0/JGFsAwHw1WiclUsbv7q5ohG5JAUkirTS4g9qzEZIFI02ISXjKenOlv0MlayMhAZSM9KPspMZ2nFTNTULInXk2KkyxbbFWwckUbr0MlZDbGVd24DyNFLbMjqAQSe6plkU2D2AfOinx28XLAz0paZphUQjayjqBTSws3urmrWQI3jUa3wA3zo0xYRAMbB1U8s04bZgObClz47aOnmxgcsUaYZRWuu1iM0inZ/3rU1WpkwjRUZosUCG1pVJj50o8qVodMPNGKbDZzyo3fZjlnNFhQ4KP60hPapBmIOAvfinYiSiO5wqk+dTI7H9m8lxIEVRkk91P2kIJGc5q5ggIQBED7mAIPhmspclM0USs0eyt7+YpCGdEALOvJge7A7+lWGkXlnYzS2fEdg01sU3QytAA45d5Hd+Yq5tBYaZbNeyARJId2NoDMcdAKrtQ1SPUo5Ydsk8RIaJ5gFaLyG04I8z1qU3JjaSM0IhNOOxj7JJHwFJLbcnx76e1TTLnTJAtwoKN7kq81f5Gtvw1wk1/saJWJUggkZrV/6LArfjiG1R4DH+/8AcVQO/wDq6c/IUPlwLFnEOlJk+EedXPFmjfgGo9kswmtZF3wSjvU9x86pFdZHUA8+ta6TjZNUy50tQQKh3mPxN8Duqz0VYzylZl81GagX6qurOFJIx1IrFdmxcW+31QeOKrdLJ9fb+qrq0SH1E7u03Y8OVUdjyvHA/j5Ghd2EvhP12RnmjPLkeXKpV25/C0Axnb/DUPWh+7+dPyZ/Def8NOvDOxzRnxp8h5Z6dKjaKf8AxBx0Bz1FHpWTbNzwPCmtOB9eYg95pOPo7EaySZ4zy97wqwupM6ZH06VXar/tEfzqXKD6mOZ5DlTaBDWjxh8KRjfkKT0zgn/Cmb6JorqJXXB648R41c6XGJbC0e3QkpuEqIAzAqGYtzGAdvPByD9Kr79klubZTJkAuQ2PhLZHL/Cpvs0GpgoAA8KiWg9ls+JqwukiDDa4b6VEslUxOS+CD0xVJgQbgftY8eNTZYV9VMwz7EwiPzKkj9DUacDt4txwM9asbcZ07WI2HutDInz3Bc/3T+dDEZ+X943zpunLj945GeRptuQzWyZg12JoqUBnHnSCeZFFiobiNKY0iKlPUliIzzNKuPgpMfU0dz8FADkbbVzTcLD1pGYAru6UCfYAprHPlVEs11lF0Ofr3Yqys9QsTcR26XiPI5wixqTk+BPcazmnX0UtpLbXc3YtIGVZCPZAIxS59NFnZQ3tsBdKozLKGGwHI24Gc/lWOE32Wpfwc1DVX1SeN3i7ONFxEg6gefnUvTwcgjy8aqi9k+50MkT+zhFG5T4nJII+1WGnymMjLEg9Oda/KIvs7h6NJYkt8N1I7xW4v7OG+tJbadd0Uq7WAOMjwrj3BesG3kVWblyrsNhcrdW6yL0xWUVbaZbX053xN6PBewy2unTpDZSx7XtplL7XXmrI+cg92OlcA9TmstXls7oFJYXKMMd4r2DqE0FpA1xcSpDEnNnc4AFefPTFpiWfGVtfxbdl7DvJU8iy9T9iKz45OEsMf/XZW6BBvkI3MMeFVmorjW5BuJwB1rQcMCJmdnbHs8j41nr451uTzxTizVmosoM6Wzb3yATjurNache9YKOZetfGI04ezu9tuWKzOiIfXiVIzv7xmiL6bFNDmvIy9kCOeeWakTRsmlZYH3af4tGZ7cnHXuGKl3u48PAtt6YHs09+EUVOjxk2bsAdoFM6VGz37hRk5PKrfRX9X0aeRtpQLkjHOmNGxZX4eaW3XtFLBjKrBcjkDtPXyJFDn6PJV6uuLlAeoaprIDbxK7bO05BsE88eVSNaiWPUFBhjmf8AjbIUfarDt4FsTGphkfaRiBG5HxyAefz8TSfIGSo060uISy5jT2SsqM5G9c81O0HAPTx59KKe2R76FzK0aMduGTcQfAEciO7u+VW+mXEDTxR3KN28vsx7ZF3SHHTB55+fdnn0FBJoIJUaH2WGSHKMST45UEVDk0zVIqNSgaCQLKTy8RgfSoWnxGS3kYnv8KvNQkGVFm8M64/dxyBv+kHP5VEtOzxsMEVszMMmVyq43DPd4H9aal0JqmUUq5u4RnHM1eWUJtbfWbDU4oizWwm9YQ52sNrJg+eRy+lQmsgL1MuCcEo0ZLLnBODkZzy8jT6OBa6vDNskYxwssqscr7SlVx4dx+VU3ZJmJuZkA/ipEq4QeNOykZf50i4OVB+VbJmY3twFptF3M1Pufc+VNxOAzDHfTFRHixRuRSYjQkPOiiQojzNHc4wlJiPM0q5PJKYBE+yKQDzpZ5x02ophQ6pqbZ3Pq8csbrvhlA3oCR0OQcjpUNBUiHCvG2MhXBxSY0bnSNPsxZRKbFG3LubtBlsnu+lS34at7ySNrNjaFRgoI96t4Y58jRWUyzRLIMlZfbGfOrm1kYFQoxy55rhlySUjZRTRQaVcNZ3Utu7x9pDIY3XPQg4POuxcFapHLbCNpFz/AFCsj6npc9mW1SCLs40IEgXa0Y8iKzGm6nJYhmQlQDyJ5HFaR5N9olxro6xx/rVrZcPXcTurPIhUDr1rjfHc8cnC3CjCXtHCE5PXBX/tSNf4hub6NgJnPcFDZye7lVTxvOyPoumyH27S1zIBywWx/l+dXVzTEukTeG7oJJnC+70JxVRqbg67KQAPlU/QnQEu8KOMct1Vl+6trchCBRy5ChGjZrLO6xpLRkx817251n9DdY9S9tmEfaHp1q7tZETTADAhJHJu+s/pStLqBVBz7Q0RS7FL4WvFE7STxEsThuVS7+4DaEkaOzezls1XcRLtmjVvez0qVdRNHo6llOCvKm0uiB7QJ1XSpQzHf3L3Uxol409+6Xr74gTyKD/Kk6LE76dI4BwO+o+hxtLfSLGM8zSzEA9XuZIb1VtisSluioo/PGasNUue00eNe0d2I9pW6Zqo1nlfRrj4u/xqwvopE02NmGAynnTygsi6LcpbalpkkyMUhl37Yz7T5GMAVI1S3Sy4jWFQ5EeMGVNjjIzzHd1qALRrcW1zcrFLbzKNgR85weYYdx61bcTSWbcSRXFrFJGskSvJbv8A7psY2/YD71P00sZ1SdpG8eXjmo2nXDC1k5LuyeYUCl6gY8hkhC555BzUTTihtZAYgSD1oroL7Em9nS6VRKdje8OXOrDRGstQmu7W6V1kvQoV4pFUIU5j3uTdO41UFh69H0+vQVa8NvHp2tFJrSDUH9qM+3gYI5sOXcM86bVCZmJgN7+TkUi5UADA8KkaiLZbu4Fk8jWwlbsS/UrnlUec+yPpWiMw5FA2/KmoEBL5PfS2JyOdNRH2m599MRGiPKikPOhH0omxmqJCi60dx3fOkxe9Srju+dMBcXu00T7Zp2PpTJ5saAH0OakJUNCVbnyqWjcqQGl4UuGadrWRv2AQyA96MMdPnWys2wVQ8z0xWE4TO/UZPHsiB4cyOtW2o8SxQE22nOrNzV5tpG0/y+NcnLHU6R0QlSLrX9ZhmshZW7s7bv2j88AA93jzrM3N2yJtDN9Kii7ynMg/rUC4l3sWIUY861hDKM5SbLjRJ4xe+u3RUW9n+0ct0LdwH61m9R1CTVNZmvZM5lYkeQ7qK/lk9VEQYiLdu2DvNQrUZmHjWij9IbNpoDxCNu08OVVV4w/GGJ6cqstB2jrEz+Q5VX35X8ZkwhUY901BqaiOSI6SojHtgc6puHyfxP2SB7ffVvahPwwk28mce8Dyqi0lzHflwhPtmpS6aHItuKkIvoxuQszdRU3Vt34DCSyHC4wKqOIGdp4ywIbPhUq9maTSUBQjaveOtFeEj2m3kFpoEvrFzGpIyEyNxHkKhcLalaR6iwkukiLnavajaPLn0qDfWNhPw61y8Cx38TDbK0zDtEPwhemRjux16Vm7XUr2zbNvcOnkcEEeYPWtFxqiNUzf8Q6DqsMqXxtJHs2Y/wCsRHtIwPMrnFSNc3DSIPaX3e6sxovGclhIGa17FgMGbTpTavjzUZib5FOdaoT2XFWjXL6VO82qW57X1ZoVhdowDuYhTtYjkfYx15ilKFdjUrMdnN9bjuXB/OtBxIpTimf+EyBj9VU/41mw2bpGzkHBBrU8QhX4htJGQuJ7OGU4P8u3/wCtR9LQzq7xEp2XI7ah6W0Xq0uevw1I1DZuGyF0+fOo9gF9SOYnJyfaFP4U/SC5/wBdjqbwl7XEK5+ISr/0tUTkb1Bt65p7hWTsOIbLcetwqk/NsH9aGSylAIXYORzijuQQQD1FPahGYL66iA5pO4+zEUzcEkgnxqyA5dwK7vCm7dXYtt8aVKxLLkdKRAzqWK+NMRARuVIZudKQjFIfGaskOI86VP3UhOtSY7ae7mjgtYnllf3UQZJoARGeVNg+2a6BpPoo1+5txPcmKyTGT2nM/arO29E8AINzqUjDvCKBmp2h0zmhG9PMU3BJzKk9ennXbNP9HPD1uR2sEtwe/tZDj7VpNO0PSdP5WenW0XyjGalzQ82cM0PTteN0J9K0y7lbGMdkdpH1q9svRfxjc7XTS1i/506qTXd7MhQoGAO8A9Kt7dxhRUbt+Dp0ecdQ9G3GNlEZJNJMqjr6vKr/AJVj7uOW2uDDOHWVfeRhgr9K9lK2awvpS4DtOJNInvbWJI9Wt4y8cqjHaAcyreIrVdkWebbhJJhHFGjPI3JUUZJ+QrR6N6M+MNQCzQ6RJEh6GdhHn710/wBH/DEfCyJcX9sh1GVQ5d1yYlPRV8K6ba3yyIDz5+dT+i8G0cMtPRvxdY5L2SsPCOdWrL6zw9rthqLy3mlXka/xmIkfcV6oVwx76WQGBDAEHuppJ+Btnl63mb1NlDnpzXPSqnTpWjuiVZh7R6fOvUl/w7o+ogi9022lyMZaMZ+9Za59EfC0shkt4rq0Y8/2NwcD6NkUYoe7OIaxM7yQlmOakzTPJYKpdsY5866Vq3oZ9ZKmy11k2nOJ7YN+YI/SslxrwPqnC+jrM7i8Rm2E20bHYMdWGOVJoLOePEt3I5YsFJyFDch9KQ+luf3Thv6uVP2TKw5EFqsI1zyotoeUyjGnTI6m4V1iJwZAu7A8cDrWw9Sh0SGG502TtZCrdlqMW5O0BHu4yQCOYPfSo1xbhcdavuLl0nTdI03SjJ6tdCFbq5ZIw28uwUcsjLKGJxyyM8xgAw+TTovGUZniS3gs5LJrdQBJao+B4Ff86k69IRqWkgMd0emwK3Pvy1NajbzZspljGo6ekAWC5j5IyKcEHIyuDyIbpUnidI31uzuuxWCK5tY3VYp1mAwMcioHLkO7xqapjIN3IXIJZvvTFlIy27LuOPnTl2Yh+73D+oU1aGL1Y7yd3kKr4ArSNsnEWnpL7jzopz5nFCxizxPFGoI2XqKfLEgzUaFtl/FICQUO5SMZBHMdSBVjw9qcUevG8vLeORncvI8syoMnq2SGA+1KQFPrMwl1a9kX3WuZCPluqHMcjPnU7WrRrHVbi2ZSAkhKgsGO08xzHI8iOlQZscuXf0Nap9GbAzZI8qRCxBbBIp2TGRhSOVNwheeQ2flTsRXKcDoaSeZAFWY04HuP3q64UtOGxObrXZLlo43wtvDHuL488jFGkLLGeDOCNW4quQLOLs7VT7dxIMKB5eNd74b4U0LgqzV4kEt4w9qd8b3Pl4CsynpT0jT7ZbbStGnWGMYRdyxgVR6h6S7u5ctBpduGPxSyM5H06VnJuRajR0W+1OS7bBOEHRFqIzSBS5Uqg6s52qPmTXK7rjTX7j3bxbcHqLeNV/zNUdzPNeOHvZ5rlgcgzyF8fLOcUlEZ1q74p0GzB9Y1eGRhy2WitOc+GVG0fequb0jadDlbTS7qc9xnlWMH6Lu/WubUM06QG/b0p6ipxb6TYRj+Yux/Wnrf0t6qjfttM091PXbuU/rXO6FMKO1aN6XNIuJEj1a0uLAnA7Rf2sefPA3D7V0K0u7bUbJZ7KeK4glU7JYnDKw8iK8qbq0PBXF15wpqIljZpLGRgbi37iO9h4N+tUmQ4nbeKBi2t7pcE7dpx3+H+NV+m3MpiaRmWOJRkySMFUePM0XHHE+m6bwta3G5bg3X+yRqf3uO/wDpHLJ8x41xDV9YvdYk3X0xeMH2IQcRp8l/x61nnsqPh2y59IPDFh7Mur9u4/8ASwSSj+8Bj86bj9K3CwYK9xeqD8RtHP6ZNcI3YobsjB51SVBmz0ppvHHDepOsdprNqZG92OUmJz/ZcA1oFlDrlSCO4g5zXkrIwRgc+vKpmnaxqWlHOm6jc2oHRY5CFH9np+VVbJweq9wIOCKwHHnpO0XhsXOnw4vtUQbTbD3VJ/ibGOXhXP8ATvSnxJagC5a2vUH/ABY9pP1H+VZLjvU4OIrs6jbaf6rcsd0yq5YMx6kZ6fL51SlZLi0ZS7uHuLuW4YCNpWLFVGAPlS7a/uoSOzfOO486ZWd8YfDjwalI0DH9ojKe8qaroRq9B1qK4nQaihijRwGkRSw+oHP7A1B41mudQ1+7uzmRZG2oVyQEHStNolnp2rcPCaOc3FxpkR+EIYxkBd694xkbsnmB0zWZ1O4kWZVjbae8jxrn6jO0b9yj2RrLXtV0yGCC2mkijhnaZRj4mUAg9xGFHKtHc8Xafr7WjarDJp93bJ2aT2kavEV7g0fIgf0n6GqKOW/lOAok+a5FaHhXge54mvuyuJLe2U/Go5/YVUpx+iUWEdNvNRBbSpbXU0xn/U5QZAPONsOD/ZqDFBeW1kzyW7xxiQxsWHusPhI6g/PFWPGXozveH5pHsrn1yKNQ4UoRIR4jHWsxpGvX+k3M1zhbhp49rrdLvWTnyJz1x/jQsy8YO0Pzwu5PLryq+0Ph251KRYLGBpX79oz/ANqZtuKdAvPZ1jQEgY9ZtOl2YPjsblVtYqPbn4Q1WK7G3LWbAwXajv8AYyO0+a/aokpUCaJPpQ4Nv9NFlrMcLOkkMcN0qczFIq7Q3yIA+RHnXOJixwTyNb6y4mu5L2I3uoPHCGG8Y3HH9rNaviXgXR9fjtdZ0CMPBKm11gbbuYZOcd565+QpLlz00GG30cWd2J59wxSY5HXODXQpeCbBHKSiaN+9WYgj6HnTf+henjvk/vmk/wDJ416bf6vIY67m2RbUI3v7Io4V7KNUzyA/OoFsxnnMr4wvIeVTdy/xCtqowcrY7kZo91MGVB1YUk3MQ+LNOgsk7qG6oRvYh1NIOoRDpmihaLDdQ3VWHUV7lpDai3wrRkNFvvob6pDfzUg3cp+KnkWy+3c+6kSXEcQLMw5d1UiyySAozHp18KZduWMfXxoyGy9fXpbz1aG6ZjDbRdjbjuRMk4+5/IeAp7f3k5rNg86krcyhfZcjHvU8iUi73UW6qcX8o686cXUTj2lpZK0Wm7BHnWl4f4et9QtUurm5Owkjs4uo+dZISMtmt80f7PftUZ940zLrEi3HrGntLZynG/spCAx+VLNg5I6lHoOj25/2QSHxdiaF4ml2qZFrbIP+WK53bcaavFjtHinGf94mD+WKRqXE8+oLiSER4/halhhtF1xHecPXIbdZ5nHxQLsz9qxUnZlyYQ6x5+LqKNpA7EsSc91AMvd+lWrQsxZpuGUsRKDEJRNtw5LEAjwx9KsdYtLQYdIUD+IrM6XfxWkhZs8xjktWN1rVrKoG5xjxQ1DTbKtLoagupkm2oQBnurScP63Jpd/HcSzSLGGBOzrWRjurTtt/bM3PkiocmtPomg6prcq+q6Pf9mSPblXs1x3+1g1Dhfpakvh2WfW9F4o0C4vbLU4YpbKPfI0y/uhj4l8D5VxPifV5tUAF0qk42ouOnnW54i4Jmt9KTT9B0WdWmA9bnlm9qXHwjyB8eVcx1rStT0jUTa6hDLFMuDh+8eI//KlcaTsenmiLHo0kke6Nwp8CKct9I1CG5ikXCmN1dXD9CDnI86c9au4kGzeP7NOWt3es4zvcH+WtNMzos5LR7q4diR2kjljk95rpBstQb0cxR6QzeuafJ2zJF1dcEEAd57/pXOYPW3UEQzZ8kNajgfVNU0nXIZLlLgWZ5PvU4ArCftlpjWmekWcItvrMEV7CvIlxk/etHZ33CerJvjvZLBxzKMcj6Zp3j/R9N1eBteSx2xkqjSqwVpCTgHly8udc1uNDiZs28smP5lzy+lS3B+o2jpq4sw3asAQCBnwojI5HvVPFh5fnQ/D/ACrs0jjwyu3N/EfvRZPjVmNP/l+9KGn5+EfSntBhlUKFW/4d/LShp38tLaH+bKaiq7/Dufu0Y07+WjaD82UlKAzzarsaaKWNLH8P6Ufoh/kyhLdwpe5CMlMn51eDSwPho/w0fwil+iH+TKHdH/wz96LdzBXAq/8Aw5e9aH4eg+Cj9EH5Mo2AkXenXvX/ACpk9a0LWSKM7agXyhE2qvWmp2S+Ohl7p5NPjtyfZRsiodKpJqkQ0PQOE61Njmi5HAOPKqyjBxTAt+1icYaNG+Yox6uf/Lx/aqkSEdKUJnFAFvGbdGB9VhJ/mXIq2sdcWzYbNL0diOhksI3P5isoLhxR+svSoZ0a29JGs2a4to9PgH/tWcafoKcf0s8R5AN0CO/agFc5Sct73SntyYopD7PQfo69IFrq+LXUJMXj9Gbv8qnemHh611bhaW+a3D3Fh+1UqPaKfEPtzrzfZ3r2N5HPA+0q2eVemdO1y21n0eXNzdSopNo8cpY9+0gVD66G19R50YWG0FBMh7uRFPW72ydJ5V/tEVKjSY+8F24p+ONh3CsXM6Fx2NpdxqMLdzf/ACMak2r6OZQ2oNfzoOqwKBu+po1Uj4BUi1heaUKqflUSlZS4kdN4S4rs9U05tIsuHbj1RI9u2V1K4/mPQVzC/nke4kEbBVDtgKxIAz4nnW3t9TGh6HcQQDbLMmCR16Vz8s2e4VFt9FRSi+iq5eAo+XgKFCtzMFGDQoUAKFGDQoUAHk0N5HLA+1ChSGg+0PgPtTgY0KFIoUGNGTyoUKQIRuNESaFCmDG5DkVAuUVlwRQoVcTOZVTRqOYpgmhQrZHOwUVChVEsFChQoAFChQpCQsE0eTR0KDT4GpIXdWs4X7bUn9Tubu4NtEkkixK+FyqkjI+dChWfJ4aQJODnAY0vaQM7moUK5zpDXO4e0avdDiXO7JzijoVLAj8QSvuI3EDFUYBI940dChAf/9k=" alt="" /><p><%=incident.caseTitle%></p>
+                    <p><b>CIN :</b> <%=incident.CIN%></p>
+                    <p><b>creation date:</b><%=incident.dateOfCreation%></p></p>
+                    <p><b>Defendent Name:</b><%=incident.defendentName%></p>
+                    <p><b>Defendent Address:</b><%=incident.defendentAddress%></p>
+                    <p><b>Type of crime:</b><%=incident.crimeType%></p>
+                    <p><b>Date of crime:</b><%=incident.committedDate%></p>
+                    <p><b>Location of crime:</b><%=incident.committedLocation%></p>
+                    <p><b>Arresting officer:</b><%=incident.arrestingOfficer%></p>
+                    <p><b>Date of arrest:</b><%=incident.dateOfArrest%></p>
+                    <p><b>Presiding judge:</b><%=incident.presidingJudge%></p>
+                    <p><b>Public Prosecutor:</b><%=incident.publicProsecutor%></p>
+                    <p><b>Date of hearing:</b><%=incident.dateOfHearing%></p>
+                    <p><b>Date of completion:</b><%=incident.completionDate%></p>
+                    <p><b>Breif details:</b><%=incident.breif%></p>
+                    <p><b>Status:</b><%=incident.status%></p></p>
+                </div>
+              </div>
+        </div>
+        <!-- ............................................................................................................ -->
+        <div class="col">
+          <%if(user.isRegistrar=="true"){%>
+            <label class="dropdown"  style="position: relative;">
+              <div class="dd-button">
+                options
+              </div>  
+              <input type="checkbox" class="dd-input" id="test">
+              <ul class="dd-menu">
+                <li><a href="/cases/<%=incident._id%>/edit" class="btn btn-primary btn-sm">edit</a></li>
+                <li><form action="/cases/<%=incident._id%>?_method=DELETE" method="POST">
+                  <button class="delete-button" style="border:none;padding:10px;padding-right: 100px;text-align: center;background-color: red;color:white">delete-case</button>
+                </form>
+                </li>
+                <li><a href="/cases/<%=incident._id%>/addsession">add session</a></li>
+                <li class="divider"></li>
+                <li>
+                  <a href="/cases/find">find a case</a>
+                </li>
+              </ul> 
+            </label>
+            <%}%>
+        </div>
+        <div class="col">
+           
+                <div class="sessions-container">
+                    <% for(let session of incident.sessions){ %>
+                      <div class="row">
+                        <div class="card">
+                          <h4><b>JUDGE: </b><%= session.attendingJudge %></h4>
+                          <p>Summary: <%= session.summary %></p>
+                          <p><b>Next Date of Hearing: </b><%= session.nextHearingDate %></p>
+                          <p><b>date of creation: </b><%= session.dateOfCreation %></p>
+                          <%if(user.isRegistrar=="true"){%>
+                            <a href="/cases/<%= incident._id %>/edit/<%= session._id %>" class="btn btn-primary btn-sm">Edit</a>
+                            <%}%>
+                        </div>
+                      </div>
+                    <% } %>
+                  </div>
+        </div>
+    </div>
+</div>
+<!-- ..................................................................................................................... -->
+<%if(incident.assigned=="not assigned"){%>
+  <% if(user.isLawyer=="true"){%>
+    <a  href="/cases/<%=incident._id%>/assign">assign</a>
+  <%}%>
+<%}%>
+
+

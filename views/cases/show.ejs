@@ -1,0 +1,225 @@
+<link rel="stylesheet" href="/stylesheets/home.css">
+<!-- <link rel="stylesheet" href="/stylesheets/search.css"> -->
+<!-- <link rel="stylesheet" href="/stylesheets/search.css"> -->
+<link rel="stylesheet" href="/stylesheets/search.css">
+<link rel="stylesheet" href="/stylesheets/navbar.css">
+<link rel="stylesheet" href="/stylesheets/links.css">
+<link rel="stylesheet" href="/stylesheets/profile.css">
+<link rel="stylesheet" href="/stylesheets/userbutton.css">
+<!-- <link rel="stylesheet" href="/stylesheets/profilebutton.css"> -->
+<link rel="stylesheet" href="/stylesheets/mainbar.css">
+
+<!-- ..................................................................................................................................... -->
+<nav id="navbar" style="left:0;">
+  <ul class="navbar-items flexbox-col">
+    <li class="navbar-logo flexbox-left">
+      <a class="navbar-item-inner flexbox">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1438.88 1819.54">
+          <polygon points="925.79 318.48 830.56 0 183.51 1384.12 510.41 1178.46 925.79 318.48"/>
+          <polygon points="1438.88 1663.28 1126.35 948.08 111.98 1586.26 0 1819.54 1020.91 1250.57 1123.78 1471.02 783.64 1663.28 1438.88 1663.28"/>
+        </svg>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/profile" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="settings-outline"></ion-icon>
+        </div>
+        <span class="link-text">profile</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/find" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="search-outline"></ion-icon>
+        </div>
+        <span class="link-text">Search</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left" href="/cases" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="home-outline"></ion-icon>
+        </div>
+        <span class="link-text">home</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/addcase" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="folder-open-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%> <span class="link-text">addcase</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/signup" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="pie-chart-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%>  <span class="link-text">add new judge/lawyer</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/users" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="people-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%>  <span class="link-text">Users</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/status" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="chatbubbles-outline"></ion-icon>
+        </div>
+        <span class="link-text">upcoming cases</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/logout" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="settings-outline"></ion-icon>
+        </div>
+        <span class="link-text">logout</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!-- .................................................................................................................................. -->
+
+
+<%layout("./layouts/boilerplate")%>
+<div class="container1" style="height:100px;border: 1px solid #000;">
+    <div class="row" >
+        <div class="col" >
+            <div class="navbar">
+                <details>
+                    <summary></summary>
+                    <nav class="menu">
+                      <a href="/cases">Home</a>
+                      <%if(user.isRegistrar=="true"){%><a href="/cases/add">add case</a>
+                      <%}%>
+                      <a href="/cases/unsolved">pending cases</a>
+                      <a href="/signup">registar</a>
+                      <a href="/logout">logout</a>
+                    </nav>
+                  </details>
+            </div>
+        </div>
+        <div class="col">
+            <h1 style="color: aliceblue;text-align: center;">JUDICIARY INFORMATION</h1>
+        </div>
+        <div class="col">
+            <div class="container">
+                <div class="box">
+                  <form class="search" action="/cases/search" method="GET">
+                    <input class="input" type="search" name="dsearch" placeholder="Search" aria-label="Search">
+                    <button class="searchButton" type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+<style>
+    body{
+        background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQA/QMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAADAgEABAX/xAAaEAEBAQADAQAAAAAAAAAAAAAAAQIREjEh/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAEEAv/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8A+PIuRkhJGxhbIuRmYuQG5hJGZhJEV2YvMbmLkBki5GyLkFZMtmVyKkQRMq4XIqZAfV3BeruoC6suTdWXIC4Tcm4ZwALlFh7E2ACxFh7EWKgLEWHsHqACxFh7B2AHUHYbURYqBsRZ9LYiz6C8wkicwkgNzCZicwuYK3MJIzMJIg3MJIzMJIK7OVzLcxciDJFzLZlcyCZlsyuZVMgPq3qTq7qA+rLkvV3UA3KepuE2AG5RcnuUWAC5HY9Fg7kAWI1Dag9RUDYPUPqCsAOoOw1g9QQNiLPpqO+qLzCSIyTILzCZicwmYiqkLlGYXMBWYSROYXMRW5hJGZhJAdIuR0i5AZIqRsipEVPDeq5lvUBcOsJcsuQFcpuTWJsANiLDWIsVAWI1D2C1ADqC1D6g9QAag9Q+haVA2D1DUWgDqIs+lo76qLzCZg8lyBMkyjMJmIpMkkRmFzEVWYXMTmEyC5CSJyTMKNkXIyRciK2RUjpFyCskbwuRvUBWM4LcssANibDWI1ADYOw1iNQQNg9Q9gtRUDqC0fUFoAaHYbUFYoHUFo+oLUEDqDvpdDs+qKyTMHguRC58JkefC5RV5NkeSxFJkmUZJAJmEyjJMlF5XInJIjqKzFyMyuA2RvDYrgEcJsJwmgKxGi1GgFR6LoehBaHouh1QOhaLoehA6FTaFpQOh6LoWhBWfBX0t8HfVG4NkODZRCZLkWS4FLksFksRS4LBYLAJkmR5LkqkhILJMosLlcHkkBcWNUqDqmttTQTR6XUaUHoeiaHoQeh0mh6UFoWi6FoQWhaLoWlBUWi0WhBXwd9JfB31RuS5DkmRD5JkWfCZRTZLkOSxFNkuQ5JmgbJMiySUoaLlDKSVFLKSUMq5RSytlHK2UF2ptZyy1B1o9NtRaozQtKtRRE6HpWqjVVB6FomhaBGw0mqLSiNC0vQ9CD0K+k14O+qOyTIskyIfJMhyXNRTQmaHNJmgfNJmhzSZqKfNJKDNLKBZVyilVKinlVKGVUoGmndhct5DSdmco5ZaGqtRazlNoa61FrbUWgzVHqt1R6qonVHqqtFqgnVFqq1R6VEaHpehaoI0O+rtHfVR2SZoc0mQNmlzQZvwmainzSShlJKBs0ua8+aXNRT5pJXnlJnQHlVKGaXKBppsopWzRim5dyOad2QJyy6RazkF2ptTdJulRtqLXXSLowdqj1XXSLQZqj1W6o9UE2j1Vao9VUTRaXaLVBlHb9Vod9VGQmWuBeSZc5AkJlzhSQmXORSReWOAkXHOBUbHOBrXOSq51c4E1NY5UTUVrgHUVzgRoVa5Qehaa4QWh1zgRUX1zlR//9k=");
+    }
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <title>Login Form</title>
+  </head>
+  
+  <body>
+      <div class="container2">
+          <div class="shape">
+              <div class="image"></div>
+          </div>
+          <h3><%=user.username%></h3>
+          <h3 class="title"><%=user.email%></h3>
+          <p><%=user.phone%></p>
+          <p><%=user.street%></p>
+          <p><%=user.city%></p>
+          <div class="icons">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+              <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+          </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="grid">
+        <a href="/unsolved" class="btn">pending cases</a>
+        <a href="/solved" class="btn btn--outline">solved cases</a>
+        <a href="/cases/find" class="card">find a case</a>
+      </div><br><br>
+      <%if(user.isRegistrar=="true"){%>
+      <div class="static">
+        <button>
+          <div class="center">
+            <button type="button" class="btn5 unique-button" style="height:200px;width:300px" onclick="changePage('/users')">users</button>
+        </div>
+        
+          <svg viewBox="0 0 22 22" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <line x1="15" y1="16" x2="19" y2="12"></line>
+            <line x1="15" y1="8" x2="19" y2="12"></line>
+          </svg>
+    
+          <svg class="spinner" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" />
+          </svg>
+    
+        </button>
+        <input id="blur" type="range" min=0 max=10 value=0 step=0.2>
+      </div>
+    </div>
+    <%}%>
+  </div>
+</div>
+
+<a href="/cases/status">check</a>
+
+<script>
+  function changePage(url) {
+    window.location.href = url; // Change the page to the specified URL
+}
+
+  </script>
+
+
+
+<script>
+    const form=document.forms.sort;
+    function handleSubmit(event){
+       event.preventDefault();
+        const formData=new FormData(event.target);
+        const asString=new URLSearchParams(formData).toString();
+        console.log(asString);
+      }
+      FormDataEvent.addEventListener("submit",handleSubmit)
+
+      (function() {
+
+var quotes = $(".quotes");
+var quoteIndex = -1;
+
+function showNextQuote() {
+++quoteIndex;
+quotes.eq(quoteIndex % quotes.length)
+.fadeIn(2000)
+.delay(5000)
+.fadeOut(2000, showNextQuote);
+}
+
+showNextQuote();
+
+})();
+  </script>

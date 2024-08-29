@@ -1,0 +1,85 @@
+<h1>choose a date for date of hearing</h1>
+<div class="calendar" id="calendar">
+    <!-- Calendar days will be dynamically generated here -->
+</div>
+<a href="/cases/addcase">back</a>
+
+
+<!-- calendar.ejs -->
+    <style>
+        /* Calendar container */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        
+        /* Calendar day */
+        .day {
+            border: 1px solid #f5f1f1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Highlighted day */
+        .spot {
+            background-color: #06f506; /* Yellow background */
+        }
+        .day a {
+            display: block;
+            color: inherit; /* Inherit text color */
+            text-decoration: none; /* Remove underline */
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+
+    
+
+    <script>
+        // Define possibleDates array here or pass it from server-side code
+      //  const possibleDates = ["2024-03-18", "2024-03-20", "2024-03-25"];
+        const possibleDates = <%- JSON.stringify(possibleDates) %>;
+
+        const spotDays=[];
+    for(let date of possibleDates){
+    const reqdate = new Date(date);
+    const year = reqdate.getFullYear();
+    const month = String(reqdate.getMonth() + 1).padStart(2, '0');
+    const day = String(reqdate.getDate()).padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day}`;
+    spotDays.push(formattedDate);
+}
+console.log(spotDays);
+generateCalendar();
+
+// Function to generate calendar
+function generateCalendar() {
+    const calendarContainer = document.getElementById('calendar');
+    const today = new Date();
+    const next30Days = new Date(today);
+    next30Days.setDate(next30Days.getDate() + 30);
+
+    let calendarHTML = '';
+    let currentDate = new Date(today);
+
+    while (currentDate <= next30Days) {
+        const dateString = currentDate.toISOString().split('T')[0];
+        const isSpot = spotDays.includes(dateString); // Check if dateString is in spotDays
+        const dayClass = isSpot ? 'spot' : '';
+        if (isSpot) {
+                    calendarHTML += `<a href="/cases/addcase?date=${dateString}" class="day ${dayClass}">${dateString}</a>`;
+                } else {
+                    calendarHTML += `<div class="day ${dayClass}">${dateString}</div>`;
+                }
+        
+       // calendarHTML += `<div class="day ${dayClass}">${currentDate.getDate()}</div>`;
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    calendarContainer.innerHTML = calendarHTML;
+}
+// march 18
+    </script>

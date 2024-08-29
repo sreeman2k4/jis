@@ -1,0 +1,304 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body {
+   
+    background-image: url("data:image/jpeg;base64,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");
+    
+  }
+  
+  h1 {
+    font-size: 5.25vmin;
+    text-align: center;
+    color: white;
+  }
+  p {
+    font-size: max(10pt, 2.5vmin);
+    line-height: 1.4;
+    color: #0e390e;
+    margin-bottom: 1.5rem;
+  }
+  
+  .wrap {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 85vmin;
+    height: 65vmin;
+    margin: 2rem auto;
+    border: 8px solid;
+    border-image: linear-gradient(
+        -50deg,
+        brown,
+        rgb(197, 69, 69),
+        rgb(129, 32, 32),
+        brown,
+        rgb(197, 69, 69),
+        rgb(129, 32, 32),
+        brown,
+       
+      )
+      1;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+    position: relative;
+    left: 0; /* Position to the left of the page */
+    top: 50%; /* Adjust as needed */
+    transform: translateY(-50%); /* Center vertically */
+    overflow: hidden;
+  }
+  .overlay {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0.75rem;
+    background: #b49a08;
+    transition: 0.4s ease-in-out;
+    z-index: 1;
+  }
+  .overlay-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15vmin;
+    height: 100%;
+    padding: 0.5rem 0 0 0.5rem;
+    border: 3px solid;
+    border-image: linear-gradient(
+        to bottom,
+        #aea724 5%,
+        rgb(174, 69, 17) 35% 65%,
+        #aea724 95%
+      )
+      0 0 0 100%;
+    transition: 0.3s ease-in-out 0.2s;
+    z-index: 1;
+  }
+  .image-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60vmin;
+    height: 100%;
+    background-image: url("https://w0.peakpx.com/wallpaper/743/549/HD-wallpaper-lawyers-concepts-gavel-judges-hammer-lawyer-law-concepts.jpg");
+    background-size: cover;
+    transition: 0.3s ease-in-out;
+    /* border: 1px solid green; */
+  }
+  
+  .inset {
+    max-width: 50%;
+    margin: 0.25em 1em 1em 0;
+    border-radius: 0.25em;
+    float: left;
+  }
+  
+  .dots {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 55px;
+    height: 4vmin;
+    transition: 0.3s ease-in-out 0.3s;
+  }
+  .dot {
+    width: 14px;
+    height: 14px;
+    background: yellow;
+    border: 1px solid indigo;
+    border-radius: 50%;
+    transition: 0.3s ease-in-out 0.3s;
+  }
+  
+  .text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60vmin;
+    height: 100%;
+    padding: 3vmin 4vmin;
+    background: #fff;
+    box-shadow: inset 1px 1px 15px 0 rgba(0 0 0 / 0.4);
+    overflow-y: scroll;
+  }
+  
+  .wrap:hover .overlay {
+    transform: translateX(-60vmin);
+  }
+  .wrap:hover .image-content {
+    width: 30vmin;
+  }
+  .wrap:hover .overlay-content {
+    border: none;
+    transition-delay: 0.2s;
+    transform: translateX(60vmin);
+  }
+  .wrap:hover .dots {
+    transform: translateX(1rem);
+  }
+  .wrap:hover .dots .dot {
+    background: white;
+  }
+  
+  /* Animations and timing delays */
+  .animate {
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+    animation-fill-mode: backwards;
+  }
+  /* Pop In */
+  .pop {
+    animation-name: pop;
+  }
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: scale(0.5, 0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }
+  
+  /* Slide In */
+  .slide {
+    animation-name: slide;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translate(4em, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+  
+  /* Slide Left */
+  .slide-left {
+    animation-name: slide-left;
+  }
+  @keyframes slide-left {
+    0% {
+      opacity: 0;
+      transform: translate(-40px, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+  
+  .slide-up {
+    animation-name: slide-up;
+  }
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(3em);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .delay-1 {
+    animation-delay: 0.3s;
+  }
+  .delay-2 {
+    animation-delay: 0.6s;
+  }
+  .delay-3 {
+    animation-delay: 0.9s;
+  }
+  .delay-4 {
+    animation-delay: 1.2s;
+  }
+  .delay-5 {
+    animation-delay: 1.5s;
+  }
+  .delay-6 {
+    animation-delay: 1.8s;
+  }
+  .delay-7 {
+    animation-delay: 2.1s;
+  }
+  .delay-8 {
+    animation-delay: 2.4s;
+  }
+
+
+  @import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #343a40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  user-select: none;
+}
+
+.sessions-container {
+    display: flex;
+    flex-direction: column; /* Display sessions in a column */
+  }
+  
+  .card {
+    border-radius: 10px;
+    filter: drop-shadow(0 5px 10px 0 #ffffff);
+    width: 400px;
+    height: 400px;
+    background-color: #ffffff;
+    padding: 20px;
+    position: relative; /* Change position to absolute */
+    right: 0; /* Position the cards to the right side of the page */
+    margin-bottom: 20px; /* Add space between cards */
+    transition: 0.6s ease-in;
+  }
+  
+  /* .card::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -15px;
+    right: -15px;
+    background: #cb6927;
+    height: 220px;
+    width: 25px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .card:hover::before {
+    transition-delay: 0.2s;
+    transform: scale(40);
+  }
+  
+  .card:hover {
+    color: #ffffff;
+  }
+  
+  .card p {
+    padding: 10px 0;
+  }
+   */

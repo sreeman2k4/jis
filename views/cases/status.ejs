@@ -1,0 +1,231 @@
+<link rel="stylesheet" href="/stylesheets/info.css">
+<%layout("./layouts/boilerplate")%>
+<link rel="stylesheet" href="/stylesheets/home.css">
+<link rel="stylesheet" href="/stylesheets/search.css">
+<link rel="stylesheet" href="/stylesheets/navbar.css">
+<link rel="stylesheet" href="/stylesheets/display.css">
+<link rel="stylesheet" href="/stylesheets/filter.css">
+<link rel="stylesheet" href="/stylesheets/button.css">
+<link rel="stylesheet" href="/stylesheets/mainbar.css">
+<!-- ..................................................................................................................................... -->
+<nav id="navbar" style="left:0;">
+  <ul class="navbar-items flexbox-col">
+    <li class="navbar-logo flexbox-left">
+      <a class="navbar-item-inner flexbox">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1438.88 1819.54">
+          <polygon points="925.79 318.48 830.56 0 183.51 1384.12 510.41 1178.46 925.79 318.48"/>
+          <polygon points="1438.88 1663.28 1126.35 948.08 111.98 1586.26 0 1819.54 1020.91 1250.57 1123.78 1471.02 783.64 1663.28 1438.88 1663.28"/>
+        </svg>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/profile" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="settings-outline"></ion-icon>
+        </div>
+        <span class="link-text">profile</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/find" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="search-outline"></ion-icon>
+        </div>
+        <span class="link-text">Search</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left" href="/cases" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="home-outline"></ion-icon>
+        </div>
+        <span class="link-text">home</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/addcase" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="folder-open-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%> <span class="link-text">addcase</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/signup" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="pie-chart-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%>  <span class="link-text">add new judge/lawyer</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/users" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="people-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%>  <span class="link-text">Users</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/status" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="chatbubbles-outline"></ion-icon>
+        </div>
+        <span class="link-text">upcoming cases</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/logout" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="settings-outline"></ion-icon>
+        </div>
+        <span class="link-text">logout</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- .................................................................................................................................. -->
+
+
+<div class="container1" style="height:100px;border: 1px solid #000;">
+  <div class="row" >
+      <div class="col" >
+          <div class="navbar">
+              <details>
+                  <summary></summary>
+                  <nav class="menu">
+                    <a href="/cases">Home</a>
+                    <%if(user.isRegistrar=="true"){%><a href="/cases/add">add case</a>
+                    <%}%>
+                    <a href="/cases/pending">pending cases</a>
+                    <a href="/signup">register</a>
+                    <a href="/logout">logout</a>
+                  </nav>
+                </details>
+          </div>
+      </div>
+      <div class="col">
+          <h1 class="" style="color: aliceblue;text-align: center;">JUDICIARY INFORMATION</h1>
+      </div>
+      <div class="col">
+          <div class="container">
+              <div class="box">
+                <form class="search" action="/cases/search" method="GET">
+                  <input class="input" type="search" name="dsearch" placeholder="Search" aria-label="Search">
+                  <button class="searchButton" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+              </div>
+            </div>
+      </div>
+  </div>
+</div>
+
+<!-- ....................................................................... -->
+
+
+<form name="sort">
+            <select id="assigned" name="assigned">
+                <option value="none" <%=query.assigned==="none"?"selected":""%>>none</option>
+                    <option value="assigned" <%=query.assigned==="assigned"?"selected":""%>>assigned</option>
+                    <option value="not assigned" <%=query.assigned==="not assigned"?"selected":""%>>not assigned</option>
+            </select>
+            <button class="button">search</button>
+</form>
+
+
+
+
+<%let flag=0%>
+            <%if(user.isLawyer=="true"){%>
+             <% for(let incident of incidents){%>
+                <%for(let problem of user.cases){%>
+                 <% if(JSON.stringify(problem._id) === JSON.stringify(incident._id)){%> 
+                    <%flag=1%>
+                  <%}%>
+                <%}%>
+               <%if(!flag){%>
+                <a href="/cases/<%=incident._id%>/payment" style="text-decoration: none;color: #000;" >
+                  <figure class="movie" style="right:0;">
+                      <div class="movie__hero">
+                        <img src="data:image/jpeg;base64,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" alt="Rambo" class="movie__img">
+                      </div>
+                      <div class="movie__content">
+                        <div class="movie__title">
+                          <h1 class="heading__primary"> <p><%=incident.CIN%></p> <i class="fas fa-fire"></i></h1>
+                          <div class="movie__tag movie__tag--1"><%=incident.currently%></div>
+                          <div class="movie__tag movie__tag--2"><%=incident.assigned%></div>
+                        </div>
+                        <p class="movie__description">
+                          <p><%=incident.breif%></p>
+                        </p>
+                        <div class="movie__details">
+                          <p class="movie__detail"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span></p>
+                          <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span></p>
+                          <p class="movie__detail"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
+                            </span></p>
+                        </div>
+                      </div>
+                      <div class="movie__price"><%=incident.status%></div>
+                    </figure>
+                  </a>
+               
+               <%}else{%>
+                <a href="/cases/<%=incident._id%>" style="text-decoration: none;color: #000;">
+                  <figure class="movie" style="right:0;">
+                      <div class="movie__hero">
+                        <img src="data:image/jpeg;base64,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" alt="Rambo" class="movie__img">
+                      </div>
+                      <div class="movie__content">
+                        <div class="movie__title">
+                          <h1 class="heading__primary"> <p><%=incident.CIN%></p> <i class="fas fa-fire"></i></h1>
+                          <div class="movie__tag movie__tag--1"><%=incident.currently%></div>
+                          <div class="movie__tag movie__tag--2"><%=incident.assigned%></div>
+                        </div>
+                        <p class="movie__description">
+                          <p><%=incident.breif%></p>
+                        </p>
+                        <div class="movie__details">
+                          <p class="movie__detail"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span></p>
+                          <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span></p>
+                          <p class="movie__detail"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
+                            </span></p>
+                        </div>
+                      </div>
+                      <div class="movie__price"><%=incident.status%></div>
+                    </figure>
+                  </a>
+                
+               <% flag=0;%>
+              <% }  %>
+             <% } %>
+            <%}else{%>
+              <%for(let incident of incidents){%>
+                <a href="/cases/<%=incident._id%>" style="text-decoration: none;color: #000;">
+                  <figure class="movie" style="right:0;">
+                      <div class="movie__hero">
+                        <img src="data:image/jpeg;base64,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" alt="Rambo" class="movie__img">
+                      </div>
+                      <div class="movie__content">
+                        <div class="movie__title">
+                          <h1 class="heading__primary"> <p><%=incident.CIN%></p> <i class="fas fa-fire"></i></h1>
+                          <div class="movie__tag movie__tag--1"><%=incident.currently%></div>
+                          <div class="movie__tag movie__tag--2"><%=incident.assigned%></div>
+                        </div>
+                        <p class="movie__description">
+                          <p><%=incident.breif%></p>
+                        </p>
+                        <div class="movie__details">
+                          <p class="movie__detail"><span class="icons icons-red"><i class="fas fa-camera-retro"></i> </span></p>
+                          <p class="movie__detail"><span class="icons icons-grey"><i class="fas fa-clock"></i> </span></p>
+                          <p class="movie__detail"><span class="icons icons-yellow"><i class="fas fa-file-invoice-dollar"></i>
+                            </span></p>
+                        </div>
+                      </div>
+                      <div class="movie__price"><%=incident.status%></div>
+                    </figure>
+                  </a>
+               
+              <%}%>
+           <% }%>

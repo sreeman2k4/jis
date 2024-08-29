@@ -1,0 +1,84 @@
+.container {
+    position: relative;
+    height: 100vh; /* Ensures the container takes the full height of the viewport */
+  }
+  
+
+.box{
+    position: absolute;
+    top: 1px; /* Adjust this value to control the distance from the top */
+    right: 10px; /* Adjust this value to control the distance from the right */
+}
+
+.input {
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+    background: none;
+    border: 4px solid #ffd52d;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: Comic Sans MS;
+    font-size: 26px;
+    color: #ffd52d;
+    outline: none;
+    transition: .5s;
+}
+.box:hover input{
+    width: 350px;
+    background: #3b3640;
+    border-radius: 10px;
+}
+.box i{
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translate(-50%,-50%);
+    font-size: 26px;
+    color: #ffd52d;
+    transition: .2s;
+}
+.box:hover i{
+    opacity: 0;
+    z-index: -1;
+}
+
+/* YouTube icon */
+#ytb {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 52px;
+  border: 2px solid transparent;
+  color: #ff1717;
+  font-size: 25px;
+  transition: 0.3s;
+}
+
+#ytb:hover{
+  border-radius: 50%;
+  border-color: #ff1717;
+  box-shadow: 0 0 10px #ff4040;
+}
+
+
+  
+  
+  /* .search {
+    display: flex;
+  }
+   */
+  /* .input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+   */
+  /* .searchButton {
+    padding: 8px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+  }
+   */

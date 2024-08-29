@@ -1,0 +1,105 @@
+<%layout("./layouts/boilerplate")%>
+<link rel="stylesheet" href="/stylesheets/form.css">
+
+
+<form action="/cases" method="POST" novalidate class="validated-form" >
+   <div class="wrapper">
+    <div class="flex-container">
+        <div class="container">
+             <div>
+                <label for="dateOfCreation" class="form-label">date of creation:</label>
+                <input type="text" class="form-control" name="case[dateOfCreation]" placeholder="creation date" id="dateOfCreation" value="<%=formattedDate%>">
+             </div>
+             <a href="/cases" style="text-decoration: none;font-size: large;"cls="btn btn-primary">back</a>
+            <a href="/cases/addcase/slot" style="text-decoration: none;font-size: large;"cls="btn btn-primary">book slot</a>
+ 
+        </div>
+        <div class="container">
+            <!-- <h1><b>ADD CASE DETAILS</b></h1> -->
+            <div>
+                <label for="caseTitle" class="form-label">Case Title:</label>
+                <input type="text" class="form-control" name="case[caseTitle]" placeholder="Case Title" id="caseTitle" >
+                <div class="valid-feedback">proceed</div>
+             </div>
+             <div>
+                <label for="defendentName" class="form-label">Defendent Name:</label>
+                <input type="text" class="form-control" name="case[defendentName]" placeholder="Defendent Name" id="defendentName">
+             </div>
+             <div>
+                <label for="defendentAddress" class="form-label">Defendent Address:</label>
+                <input type="text" class="form-control" name="case[defendentAddress]" placeholder="Defendent Address" id="defendentAddress">
+             </div>
+             
+             <div>
+                 <label for="crimeType" class="form-label">Crime Type:</label>
+                 <select name="case[crimeType]" id="crimeType">
+                     <% for(let type of types) { %>
+                         <option value="<%=type%>"><%=type%></option>
+                     <% } %>
+                 </select>
+              </div>
+             <div>
+                 <label for="committedDate" class="form-label">Committed Date</label>
+                 <input type="date" class="form-control" name="case[committedDate]" placeholder="Committed Date" id="committedDate">
+             </div>
+             
+             <div>
+                 <label for="committedLocation" class="form-label">Committed Location:</label>
+                 <input type="text" class="form-control" name="case[committedLocation]" placeholder="Committed Location" id="committedLocation">
+             </div>
+             <div>
+                 <label for="arrestingOfficer" class="form-label">Arresting Officer:</label>
+                 <input type="text" class="form-control" name="case[arrestingOfficer]" placeholder="Arresting Officer" id="arrestingOfficer">
+             </div>
+             <div>
+                <label for="dateOfArrest" class="form-label">Date Of Arrest</label>
+                <input type="date" class="form-control" name="case[dateOfArrest]" placeholder="Date of Arrest" id="dateOfArrest">
+            </div>
+       </div>
+           <div class="container">
+            
+            <div>
+                <label for="presidingJudge" class="form-label">Presiding Judge:</label>
+                <input type="text" class="form-control" name="case[presidingJudge]" placeholder="Presiding Judge" id="presidingJudge">
+            </div>
+            <div>
+                <label for="publicProsecutor" class="form-label">Public Prosecutor:</label>
+                <input type="text" class="form-control" name="case[publicProsecutor]" placeholder="Public Prosecutor" id="publicProsecutor">
+            </div>
+            <div>
+                <label for="dateOfHearing" class="form-label">Date of Hearing</label>
+                <input type="date" class="form-control" name="case[dateOfHearing]" placeholder="Date of Hearing" id="dateOfHearing" value="<%=query.date%>">
+            </div>
+            <div>
+                <label for="completionDate" class="form-label">Completion Date</label>
+                <input type="date" class="form-control" name="case[completionDate]" placeholder="Completion Date" id="completionDate">
+            </div>
+           
+            <div>
+               <label for="CIN" class="form-label">CIN:</label>
+               <input type="text" class="form-control" name="case[CIN]" placeholder="CIN" id="CIN">
+            </div>
+            <div>
+                <label for="breif"class="form-label">breif:</label>
+                <textarea name="case[breif]" class="form-control"cols="10"rows="2"></textarea>
+             </div>
+            <div>
+                <label for="currently" class="form-label">currently:</label>
+                <select name="case[currently]" id="currently">     
+                        <option value="running">running</option>
+                        <option value="pending">pending</option>   
+                        <option value="closed">closed</option>   
+                </select>
+             </div>
+            
+            
+            <button type="submit" class="btn btn-success">ADD</button>
+        </div>
+           
+          
+        </div>
+       
+   </div>
+ </form>
+
+ 

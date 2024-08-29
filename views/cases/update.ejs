@@ -1,0 +1,173 @@
+<%layout("./layouts/boilerplate")%>
+<link rel="stylesheet" href="/stylesheets/form.css">
+<link rel="stylesheet" href="/stylesheets/mainbar.css">
+
+
+<!-- ..................................................................................................................... -->
+<nav id="navbar" style="left:0;">
+    <ul class="navbar-items flexbox-col">
+      <li class="navbar-logo flexbox-left">
+        <a class="navbar-item-inner flexbox">
+          <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1438.88 1819.54">
+            <polygon points="925.79 318.48 830.56 0 183.51 1384.12 510.41 1178.46 925.79 318.48"/>
+            <polygon points="1438.88 1663.28 1126.35 948.08 111.98 1586.26 0 1819.54 1020.91 1250.57 1123.78 1471.02 783.64 1663.28 1438.88 1663.28"/>
+          </svg>
+        </a>
+      </li>
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left"  href="/profile" style="color:aliceblue">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="settings-outline"></ion-icon>
+          </div>
+          <span class="link-text">profile</span>
+        </a>
+      </li>
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left"  href="/cases/find" style="color:aliceblue">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="search-outline"></ion-icon>
+          </div>
+          <span class="link-text">Search</span>
+        </a>
+      </li>
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left" href="/cases" style="color:aliceblue">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="home-outline"></ion-icon>
+          </div>
+          <span class="link-text">home</span>
+        </a>
+      </li>
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left"  href="/cases/addcase" style="color:aliceblue">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="folder-open-outline"></ion-icon>
+          </div>
+          <span class="link-text">addcase</span>
+        </a>
+      </li>
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left"  href="/signup" style="color:aliceblue">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="pie-chart-outline"></ion-icon>
+          </div>
+          <span class="link-text">add new judge/lawyer</span>
+        </a>
+      </li>
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left"  href="/users" style="color:aliceblue">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="people-outline"></ion-icon>
+          </div>
+          <span class="link-text">Users</span>
+        </a>
+      </li>
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left"  href="/cases/status" style="color:aliceblue">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+          </div>
+          <span class="link-text">upcoming cases</span>
+        </a>
+      </li>
+      <li class="navbar-item flexbox-left">
+        <a class="navbar-item-inner flexbox-left"  href="/logout" style="color:aliceblue">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <ion-icon name="settings-outline"></ion-icon>
+          </div>
+          <span class="link-text">logout</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+<!-- ....................................................................................................................   -->
+
+<form action="/cases/<%=incident._id%>?_method=PUT"   method="POST" >
+   <div class="wrapper">
+    <div class="flex-container">
+        <div class="container">
+            <!-- <h1><b>update CASE DETAILS</b></h1> -->
+            <div>
+                <label for="caseTitle" class="form-label">caseTitle:</label>
+                <input type="text" class="form-control" name="case[caseTitle]" placeholder="caseTitle" id="caseTitle" value="<%=incident.caseTitle%>"required>
+                <div class="valid-feedback">proceed</div>
+             </div>
+             <div>
+                <label for="defendentName" class="form-label">defendent Name:</label>
+                <input type="text" class="form-control" name="case[defendentName]" placeholder="defendentName" id="defendentName" value="<%=incident.defendentName%>">
+             </div>
+             <div>
+                <label for="defendentAddress" class="form-label">defendent Address:</label>
+                <input type="text" class="form-control" name="case[defendentAddress]" placeholder="defendentAddress" id="defendentAddress" value="<%=incident.defendentAddress%>">
+             </div>
+             
+             <div>
+                 <label for="crimeType" class="form-label">crimeType:</label>
+                 <select name="case[crimeType]" id="crimeType">
+                     <% for(let type of types) { %>
+                        <option value="<%=type%>"<%=incident.crimeType===type?"selected":""%>><%=type%></option>
+                     <% } %>
+                 </select>
+              </div>
+             <div>
+                 <label for="committedDate" class="form-label">committedDate</label>
+                 <input type="date" class="form-control" name="case[committedDate]" placeholder="commitedDate" id="committedDate" value="<%=incident.committedDate%>">
+             </div>
+             
+             <div>
+                 <label for="committedLocation" class="form-label">committedLocation:</label>
+                 <input type="text" class="form-control" name="case[committedLocation]" placeholder="committedLocation" id="committedLocation" value="<%=incident.committedLocation%>">
+             </div>
+             <div>
+                 <label for="arrestingOfficer" class="form-label">arrestingOfficer:</label>
+                 <input type="text" class="form-control" name="case[arrestingOfficer]" placeholder="arrestingOfficer" id="arrestingOfficer" value="<%=incident.arrestingOfficer%>">
+             </div>
+             <div>
+                <label for="dateOfArrest" class="form-label">dateOfArrest</label>
+                <input type="date" class="form-control" name="case[dateOfArrest]" placeholder="dateOfArrest" id="dateOfArrest" value="<%=incident.dateOfArrest%>">
+            </div>
+       </div>
+           <div class="container">
+            
+            <div>
+                <label for="presidingJudge" class="form-label">presidingJudge:</label>
+                <input type="text" class="form-control" name="case[presidingJudge]" placeholder="presidingJudge" id="presidingJudge" value="<%=incident.presidingJudge%>">
+            </div>
+            <div>
+                <label for="publicProsecutor" class="form-label">publicProsecutor:</label>
+                <input type="text" class="form-control" name="case[publicProsecutor]" placeholder="publicProsecutor" id="publicProsecutor" value="<%=incident.publicProsecutor%>">
+            </div>
+            <div>
+                <label for="dateOfHearing" class="form-label">dateOfHearing</label>
+                <input type="date" class="form-control" name="case[dateOfHearing]" placeholder="dateOfHearing" id="dateOfHearing" value="<%=incident.dateOfHearing%>">
+            </div>
+            <div>
+                <label for="completionDate" class="form-label">completionDate</label>
+                <input type="date" class="form-control" name="case[completionDate]" placeholder="completionDate" id="completionDate" value="<%=incident.completionDate%>">
+            </div>
+            <div>
+                <label for="breif" class="form-label">breif</label>
+                <input type="text" cols="5" rows="3"class="form-control" name="case[breif]" placeholder="breif" id="breif" value="<%=incident.breif%>">
+            </div>
+           
+            <div>
+               <label for="CIN" class="form-label">CIN:</label>
+               <input type="text" class="form-control" name="case[CIN]" placeholder="CIN" id="CIN" value="<%=incident.CIN%>">
+            </div>
+            <div>
+                <label for="currently" class="form-label">currently:</label>
+                <select id="currently" name="case[currently]">
+                    <option value="pending" <%=incident.currently==="pending"?"selected":""%>>pending</option>
+                        <option value="running" <%=incident.currently==="running"?"selected":""%>>running</option>
+                        <option value="closed" <%=incident.currently==="closed"?"selected":""%>>closed</option>
+                </select>
+             </div>
+            <button type="submit"class="btn btn-success">update</button>
+        </div>
+           
+          
+        </div>
+       
+   </div>
+ </form>
+ 

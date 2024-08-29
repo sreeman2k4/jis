@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/stylesheets/payment.css">
+
+
+
+<form action="/cases/<%=incident._id%>/payment" method="POST">
+    <section class="component">
+        <div class="total">
+          <h3>TOTAL</h3>
+          <p>2000/-</p>
+        </div>
+        <div class="credit-card">
+          <h2>Credit card</h2>
+          <form>
+            <input type="text" name="name" placeholder="NAME" />
+            <div class="line"><input type="text" name="cardnumber" placeholder="CARD NUMBER" /> </div>
+            <div class="line">
+              <input class="litle" type="text" name="expirationdate"placeholder="EXPIRY" />
+              <input class="tall" type="text" name="cvv" placeholder="CCV" />
+            </div>
+            <button type="submit" class="valid-button">PROCEED</button>
+          </form>
+        </div>
+      </section>
+      
+      
+</form>

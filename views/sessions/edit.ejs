@@ -1,0 +1,28 @@
+<%layout("./layouts/boilerplate")%>
+
+<link rel="stylesheet" href="/stylesheets/form.css">
+<div class="wrapper">
+   <div class="flex-container">
+    <div class="container">
+        <form action="/cases/<%=incident._id%>/edit/<%=session._id%>?_method=PUT" method="POST">
+            <div>
+                <label for="attendingJudge" class="form-label">attendingJudge</label>
+                <input type="text" class="form-control" name="attendingJudge" placeholder="attendingJudge" id="attendingJudge" value="<%=session.attendingJudge%>">
+            </div>
+           <div>
+            <label for="summary" class="form-label">summary:</label>
+            <input type="text" class="form-control" name="summary" placeholder="summary" id="summary" value="<%=session.summary%>">
+           </div>
+            <div>
+                <label for="nextHearingDate" class="form-label">nextHearingDate</label>
+                <input type="date" class="form-control" name="nextHearingDate" placeholder="nextHearingDate" id="nextHearingDate" value="<%=session.nextHearingDate%>">
+            </div>
+            <button class="btn btn-danger btn-sm">submit</button>
+        </form>
+        <form action="/cases/<%=incident._id%>/<%=session._id%>?_method=DELETE" method="POST">
+            <button class="btn-danger btn-sm">delete</button>
+          </form>
+    
+       </div>
+   </div>
+   </div>

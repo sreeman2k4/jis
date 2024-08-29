@@ -1,0 +1,319 @@
+:root {
+    --hue: 190deg;
+    --sat: 50%;
+    --blur: 0px;
+}
+
+#app div {
+    --hue2: calc(var(--hue) + 60deg);
+    --sat2: calc(var(--sat) + 10%);
+    --clr: hsl(var(--hue) var(--sat) 90%);
+    --clr2: hsl(var(--hue2) var(--sat2) 85%);
+    --text: hsla(var(--hue), 70%, 10%, .9);
+    --gradoffset: 45%;
+    --gradgap: 30%;
+}
+
+#app .custom {
+    --hue: 30deg;
+    --sat: 50%;
+    --hue2: 5deg;
+    --sat2: 80%;
+}
+
+.btn5 {
+    font-size: 6vw;
+}
+
+@media screen and (min-width: 660px) {
+    button {
+        font-size: 3vw;
+    }
+}
+
+.btn5 {
+    color: var(--text);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    background-color: var(--clr);
+    background-image: linear-gradient(180deg, var(--clr2) var(--gradgap), transparent calc(100% - var(--gradgap)));
+    background-repeat: no-repeat;
+    background-position: center var(--gradoffset);
+    background-size: 100% 200%;
+    padding: 1.1em 1.5em;
+    border-radius: 2em;
+    border: none;
+    position: relative;
+    transition: all 0.5s ease;
+    outline: none;
+}
+
+.btn5::before,
+.btn5::after {
+    content: "";
+    inset: 0;
+    position: absolute;
+    border-radius: 5em;
+}
+
+.btn5::before {
+    background-image: radial-gradient(ellipse, hsla(var(--hue), 100%, 90%, .8) 20%, transparent 50%, transparent 200%), linear-gradient(90deg, hsl(0deg, 0%, 25%) -10%, transparent 30%, transparent 70%, hsl(0deg, 0%, 25%) 110%);
+    box-shadow: inset 0 .25em .75em hsla(0deg, 0%, 0%, 0.8), inset 0 -.05em .2em rgba(255, 255, 255, 0.4), inset 0 -1px 3px hsla(var(--hue), 80%, 50%, .75);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: 200% 80%, cover;
+    background-position: center 220%;
+    mix-blend-mode: overlay;
+    filter: blur(calc(var(--blur) * 0.5));
+}
+
+.btn5::after {
+    background: linear-gradient(180deg, hsla(var(--hue2), 100%, 90%, .9), hsla(var(--hue2), calc(var(--sat2) * 0.7), 50%, .75) 40%, transparent 80%);
+    top: 0.075em;
+    left: 0.75em;
+    right: 0.75em;
+    bottom: 1.4em;
+    filter: blur(var(--blur));
+    mix-blend-mode: screen;
+}
+
+.btn5:hover,
+.btn5:active,
+.btn5:focus {
+    outline: none;
+    box-shadow: 0 -0.2em 1em hsla(var(--hue2), 70%, 80%, 0.3), 0 0.5em 1.5em hsla(var(--hue), 70%, 80%, 0.5), 0 0.25em 0.3em -0.2em hsl(var(--hue) 90% 70%), 0 0.25em 0.5em hsla(var(--hue), 20%, 30%, 0.2), inset 0 -2px 2px rgba(255, 255, 255, 0.2);
+    background-position: center calc(var(--gradoffset) - 0.75em);
+    cursor: pointer; /* Add cursor pointer */
+}
+
+.static button {
+    position: relative;
+}
+
+.static button .spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(.75em) translateX(-50%);
+    opacity: 0;
+    margin: 0;
+    font-size: 2em;
+    mix-blend-mode: overlay;
+}
+
+.static button span,
+.static button svg,
+.static button .spinner {
+    transition: all 0.33s ease;
+}
+
+.static button:active,
+.static button:focus {
+    span,
+    svg:not(.spinner) {
+        transform: translateY(-1em);
+        opacity: 0;
+        filter: blur(5px);
+    }
+
+    .spinner {
+        transform: translateY(-0.5em) translateX(-50%);
+        opacity: 1;
+    }
+}
+
+body {
+    --font: "Noto Sans", sans-serif;
+    color: white;
+    background: #3b3d4c;
+    font-family: var(--font);
+    font-weight: 200;
+    padding: 2vw;
+    text-align: center;
+}
+
+.btn5 {
+    font-family: var(--font);
+    display: flex;
+}
+
+svg {
+    height: 1em;
+    width: auto;
+    margin-left: .33em;
+}
+
+button svg,
+button span {
+    display: inline-flex;
+    align-content: center;
+    align-self: center;
+    filter: drop-shadow(0 1px 0 hsla(var(--hue), 90%, 88%, 1));
+}
+
+#app {
+    display: grid;
+    gap: 2vw;
+}
+
+@media screen and (min-width: 660px) {
+    #app {
+        grid-template-columns: auto auto;
+        grid-template-rows: min-content auto max-content;
+    }
+}
+
+h1,
+p {
+    grid-column: 1/-1;
+}
+
+#app > div {
+    position: relative;
+    border-radius: 2vw;
+    min-height: 200px;
+    background-color: hsl(var(--hue), 20%, 95%);
+    background-image: linear-gradient(33deg, transparent 60%, var(--clr)), linear-gradient(210deg, transparent 60%, var(--clr2));
+    background-size: 150%;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+body,
+html,
+#app {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+a {
+    color: #6adcf6;
+}
+
+input[type=range] {
+    position: absolute;
+    top: .5em;
+    left: .5em;
+    right: .5em;
+    width: auto;
+    max-width: 40%;
+}
+
+#hue1 {
+    top: auto;
+    bottom: .5em;
+}
+
+#sat1 {
+    top: auto;
+    bottom: .5em;
+    left: auto;
+}
+
+#sat2 {
+    left: auto;
+}
+
+#grad,
+#gradoff {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#blur {
+    top: auto;
+    bottom: .5em;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+input {
+    font-family: inherit;
+    color: white;
+    background: #3b3d4c;
+    padding: 0.875em;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    outline: 1px solid transparent;
+    accent-color: var(--clr);
+    box-shadow: 0 3px 2px -3px var(--clr);
+    transition: border 0.3s ease-in, outline 0.6s ease-in, box-shadow 0.6s ease-in;
+}
+
+input:focus {
+    border-color: var(--clr2);
+    outline-color: var(--clr2);
+    transition: border 0.6s ease-out, outline 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+input::placeholder {
+    opacity: 0.33;
+    font-style: italic;
+}
+
+input[type="range"] {
+    appearance: none;
+    height: calc(1em + 2px * 2);
+    background: #3b3d4c;
+    border: none;
+    outline: none;
+    padding: 0 5px;
+    border-radius: 1em;
+    transition: all 0.5s ease;
+}
+
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-moz-range-track,
+input[type="range"]::-ms-track {
+    background: #3b3d4c;
+    padding: 0.25em 5px;
+    opacity: 1;
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb,
+input[type="range"]::-ms-thumb {
+    width: 1em;
+    height: 1em;
+    border: none;
+    outline: none;
+    background: #eee;
+    border-radius: 1em;
+    transform: translate3d(0, 0, 0);
+}
+
+.static button {
+    cursor: pointer; /* Change cursor to pointer */
+    text-decoration: underline; /* Add underline to simulate link */
+    background: transparent; /* Make background transparent */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove box shadow */
+    font-weight: normal; /* Use normal font weight */
+}
+
+.static button:hover,
+.static button:active,
+.static button:focus {
+    transform: none; /* Remove any transformations */
+    outline: none; /* Remove outline */
+    text-decoration: underline; /* Keep underline on hover/focus */
+}
+.unique-button {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 200px;
+    width: 500px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.5em; /* Adjust font size as needed */
+    font-weight: bold; /* Make text bold */
+}
+
+.button-text {
+    text-align: center; /* Center text horizontally */
+}

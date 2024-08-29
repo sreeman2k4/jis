@@ -1,0 +1,40 @@
+/* Button styles */
+.button {
+    background-color: #ff8400; /* Blue background color */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px 20px; /* Padding */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor style */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Hover effect */
+.button:hover {
+    background-color: #b36200; /* Darker blue background color on hover */
+}
+
+/* Focus effect */
+.button:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Add custom focus outline */
+}
+
+/* Active effect */
+.button:active {
+    background-color: #0056b3; /* Darker blue background color on active */
+}
+
+.form-container {
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Arrange children vertically */
+    align-items: center; /* Center items horizontally */
+}
+.delete-button {
+    width: 100%;
+  }
+  
+
+
+

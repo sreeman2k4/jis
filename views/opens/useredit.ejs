@@ -1,0 +1,135 @@
+
+<link rel="stylesheet" href="/stylesheets/mainbar.css">
+<link rel="stylesheet" href="/stylesheets/form.css">
+
+<!-- ..................................................................................................................................... -->
+<nav id="navbar" style="left:0;">
+  <ul class="navbar-items flexbox-col">
+    <li class="navbar-logo flexbox-left">
+      <a class="navbar-item-inner flexbox">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1438.88 1819.54">
+          <polygon points="925.79 318.48 830.56 0 183.51 1384.12 510.41 1178.46 925.79 318.48"/>
+          <polygon points="1438.88 1663.28 1126.35 948.08 111.98 1586.26 0 1819.54 1020.91 1250.57 1123.78 1471.02 783.64 1663.28 1438.88 1663.28"/>
+        </svg>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/profile" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="settings-outline"></ion-icon>
+        </div>
+        <span class="link-text">profile</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/find" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="search-outline"></ion-icon>
+        </div>
+        <span class="link-text">Search</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left" href="/cases" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="home-outline"></ion-icon>
+        </div>
+        <span class="link-text">home</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/addcase" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="folder-open-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%> <span class="link-text">addcase</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/signup" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="pie-chart-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%>  <span class="link-text">add new judge/lawyer</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/users" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="people-outline"></ion-icon>
+        </div>
+        <%if(user.isRegistrar=="true"){%>  <span class="link-text">Users</span><%}%>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/cases/status" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="chatbubbles-outline"></ion-icon>
+        </div>
+        <span class="link-text">upcoming cases</span>
+      </a>
+    </li>
+    <li class="navbar-item flexbox-left">
+      <a class="navbar-item-inner flexbox-left"  href="/logout" style="color:aliceblue">
+        <div class="navbar-item-inner-icon-wrapper flexbox">
+          <ion-icon name="settings-outline"></ion-icon>
+        </div>
+        <span class="link-text">logout</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ................................................................................................................................. -->
+
+
+<div class="wrapper" style="position: absolute; top: 0; right: 0;width:500px">
+    <div class="flex-container">
+     <div class="container">
+         <form action="/users/<%=user._id%>?_method=PUT" method="POST">
+             <div>
+                 <label for="username" class="form-label">username:</label>
+                 <input type="text" class="form-control" name="username" placeholder="username" id="username" value="<%=user.username%>">
+             </div>
+             <label for="email">email:</label>
+             <input type="text" class="form-control" name="email" placeholder="email" id="email" value="<%=user.email%>">
+             <div>
+                 <label for="phone" class="form-label">phone:</label>
+                 <input type="text" class="form-control" name="phone" placeholder="phone" id="phone" value="<%=user.phone%>">
+             </div>
+             <div>
+                <label for="street" class="form-label">street:</label>
+                <input type="text" class="form-control" name="street" placeholder="street" id="street" value="<%=user.street%>">
+            </div>
+            <div>
+                <label for="city" class="form-label">city:</label>
+                <input type="text" class="form-control" name="city" placeholder="city" id="city" value="<%=user.city%>">
+            </div>
+            <div>
+                <label for="description" class="form-label">description:</label>
+                <input type="text" class="form-control" name="description" placeholder="description" id="description" value="<%=user.description%>">
+            </div>
+            <div>
+                <label for="skills"class="form-label">skills:</label>
+                <input name="skills" class="form-control"cols="30"rows="10" value="<%=user.skills%>"></input>
+             </div>
+             <div>
+                <label for="experience"class="form-label">experience:</label>
+                <input name="experience" class="form-control"cols="30"rows="10" value="<%=user.experience%>"></input>
+             </div>
+             <div>
+                <label for="profession"class="form-label">profession:</label>
+                <input name="profession" class="form-control" type="text" value="<%=user.profession%>"></input>
+             </div>
+             <button class="btn btn-danger btn-sm">submit</button>
+         </form>
+         <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+             <button class="btn-danger btn-sm">delete</button>
+           </form>
+     
+        </div>
+    </div>
+    </div>
+
+
+    <!-- ............................................................................................................. -->
